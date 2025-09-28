@@ -88,15 +88,14 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.height = msg.Height
 
 		if !m.isReady {
-			m.viewport = viewport.New(msg.Width, msg.Height-10) // Adjust height for bars
+			m.viewport = viewport.New(msg.Width, msg.Height-10)
 			m.isReady = true
 		} else {
 			m.viewport.Width = msg.Width
-			m.viewport.Height = msg.Height - 10 // Adjust height for bars
+			m.viewport.Height = msg.Height - 10
 		}
 
-		// Update textarea width within the box
-		m.textarea.SetWidth(m.width - 4) // Account for box padding/border
+		m.textarea.SetWidth(m.width - 4)
 	}
 
 	m.viewport.SetContent(m.textarea.View())
